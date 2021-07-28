@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: StockExchange
+          uri: http://localhost:8083/
+          predicates:
+              - Path=/stockexchanges/**
+
+        - id: Company
+          uri: http://localhost:8082/
+          predicates:
+              - Path=/company/**
+
+        - id: Users
+          uri: http://localhost:8080/
+          predicates:
+              - Path=/users/**
+
+
